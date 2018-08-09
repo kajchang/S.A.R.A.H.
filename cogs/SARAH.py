@@ -9,6 +9,26 @@ class SARAH:
     def __init__(self, bot):
         self.bot = bot
 
+        @self.bot.event
+        async def on_message(message):
+            async with aiohttp.ClientSession() as session:
+                async with session.get('http://novablitz.pythonanywhere.com/cardlist') as response:
+                    card_list = await response.json()
+
+                for card in card_list:
+                    if card in ''.join(message.content.split()):
+                        async with session.get('http://novablitz.pythonanywhere.com/cards/{}'.format(card)) as response:
+                            card_data = await response.json()
+                            async with session.get(card_data['image']) as response:
+                                image = BytesIO(await response.read())
+
+                            await self.bot.send_file(message.channel, fp=image, filename='{}.png'.format(card_data['name']))
+
+                        break
+
+                else:
+                    await self.bot.process_commands(message)
+
     @commands.command(pass_context=True, description='Searches for a card')
     async def card(self, ctx, *args):
         async with aiohttp.ClientSession() as session:
