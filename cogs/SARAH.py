@@ -3,6 +3,7 @@ import discord
 import aiohttp
 import asyncio
 from io import BytesIO
+import re
 
 
 class SARAH:
@@ -12,19 +13,19 @@ class SARAH:
         @self.bot.event
         async def on_message(message):
             async with aiohttp.ClientSession() as session:
-                async with session.get('http://novablitz.pythonanywhere.com/cardlist') as response:
-                    card_list = await response.json()
+                bracket_pattern = '\[(.*?)\]'
 
-                for card in card_list:
-                    if card in ''.join(message.content.split()):
-                        async with session.get('http://novablitz.pythonanywhere.com/cards/{}'.format(card)) as response:
+                card_matches = re.findall(bracket_pattern, message.content)
+
+                for card in card_matches:
+                    async with session.get('http://novablitz.pythonanywhere.com/cards/{}'.format(''.join(card.split()))) as response:
+                        if response.status == 200:
                             card_data = await response.json()
+
                             async with session.get(card_data['image']) as response:
                                 image = BytesIO(await response.read())
 
                             await self.bot.send_file(message.channel, fp=image, filename='{}.png'.format(card_data['name']))
-
-                        break
 
                 else:
                     await self.bot.process_commands(message)
