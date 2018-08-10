@@ -58,3 +58,7 @@ docs/_build/
 target/
 
 .DS_Store
+
+reddit/secrets\.json
+
+reddit/comments\.db
