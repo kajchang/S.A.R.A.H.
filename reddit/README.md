@@ -1,6 +1,6 @@
 # S.A.R.A.H.
 
-A Discord Bot for the [NovaBlitz](https://novablitz.com/) card game.
+A Reddit Bot for the [NovaBlitz](https://novablitz.com/) card game.
 
 Live on Reddit at [Nova_Sarah](https://www.reddit.com/user/Nova_Sarah).
 
