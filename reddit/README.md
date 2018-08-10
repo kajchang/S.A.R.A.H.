@@ -18,7 +18,8 @@ You will need the create a [script application](https://github.com/reddit-archiv
 ```bash
 $ git clone https://github.com/kajchang/S.A.R.A.H..git
 $ cd S.A.R.A.H./reddit
-$ pip install -r requirements.txt```
+$ pip install -r requirements.txt
+```
 
 In the `reddit` folder, create a file called `secrets.json` and populate it with the authentication data:
 
