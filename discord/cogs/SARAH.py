@@ -60,7 +60,7 @@ class SARAH:
                 embed.add_field(
                     name='Info', value='[Token Information](https://novablitz.com/token-sale/)')
                 embed.add_field(
-                    name='Exchanges', value='Buy on [Radar Relay](https://app.radarrelay.com/NVT/WETH) and [ForkDelta](https://forkdelta.github.io/#!/trade/NVT-ETH)')
+                    name='Exchanges', value='Buy on [Radar Relay](https://app.radarrelay.com/NVT/WETH) and [ForkDelta](https://forkdelta.app/#!/trade/NVT-ETH)')
 
                 await self.bot.say(embed=embed)
 
