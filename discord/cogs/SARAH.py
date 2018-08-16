@@ -30,6 +30,10 @@ class SARAH:
                 else:
                     await self.bot.process_commands(message)
 
+        @self.bot.event
+        async def on_ready():
+            await self.bot.change_presence(game=discord.Game(name='NovaBlitz'))
+
     @commands.command(pass_context=True, description='Searches for a card')
     async def card(self, ctx, *args):
         async with aiohttp.ClientSession() as session:
