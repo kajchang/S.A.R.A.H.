@@ -60,7 +60,7 @@ class SARAH:
                 embed.add_field(name='Price', value='${0:f}'.format(token_data['market_data']
                                                                     ['current_price']['usd']))
                 embed.add_field(name='24h Change', value='{0:f}% {1}'.format(
-                    change, ':chart_with_downwards_trend:' if change < 0 else (':chart_with_upwards_trend:' if change > 0 else ':bar_chart:' if change == 0)))
+                    change, ':chart_with_downwards_trend:' if change < 0 else (':chart_with_upwards_trend:' if change > 0 else ':bar_chart:')))
                 embed.add_field(
                     name='Info', value='[Token Information](https://novablitz.com/token-sale/)')
                 embed.add_field(
